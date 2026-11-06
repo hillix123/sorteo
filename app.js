@@ -1,6 +1,8 @@
 // ====== Sorteo RepsolPeru - app.js ======
-// Guarda los participantes en localStorage del navegador.
+// Guarda los participantes en localStorage del navegador
+// y además los envía a una hoja de Google Sheets.
 
+const CLAVE_STORAGE = 'sorteo_repsolperu_participantes';
 const URL_HOJA = 'https://script.google.com/macros/s/AKfycbxQrIWBnTQGTobWLRqxUY3kMjzdaZDG3Hw_sr-7l4TkJPbfYjLAUobm0P3NT56KiZrydw/exec';
 
 // ---------- Utilidades ----------
@@ -79,10 +81,30 @@ formulario.addEventListener('submit', function (e) {
     comentarios: (datos.get('comentarios') || '').trim()
   };
 
-  const lista = obtenerParticipantes();
-  lista.push(participante);
-  guardarParticipantes(lista);
+  // Guardado local (en este navegador)
+  try {
+    const lista = obtenerParticipantes();
+    lista.push(participante);
+    guardarParticipantes(lista);
+  } catch (error) {
+    console.error('No se pudo guardar en el navegador:', error);
+  }
 
+  // Envío a la hoja de Google
+  try {
+    fetch(URL_HOJA, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(participante)
+    }).catch(function (error) {
+      console.error('No se pudo enviar a la hoja:', error);
+    });
+  } catch (error) {
+    console.error('Error al enviar a la hoja:', error);
+  }
+
+  // Mostrar el ticket
   codigoEl.textContent = participante.codigo;
   formulario.classList.add('oculto');
   exito.classList.remove('oculto');
