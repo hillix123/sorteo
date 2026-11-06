@@ -3,7 +3,7 @@
 // y además los envía a una hoja de Google Sheets.
 
 const CLAVE_STORAGE = 'sorteo_repsolperu_participantes';
-const URL_HOJA = 'https://script.google.com/macros/s/AKfycbyh7uG1oIOs_XHwGWrg0lNEdD8X-9rSAhy3ZYJR-OM2xQ8xdKRx8ho8iiuoqW7Hiy4Gzw/exec';
+const URL_HOJA = 'https://script.google.com/macros/s/AKfycbw10q22K39T-ybmwxCxVo-FNCjCtw62wZDbVGKCuy1wWe7YWM90SQ-B8uZ6gKNQZKH9Ag/exec';
 
 // ---------- Utilidades ----------
 function obtenerParticipantes() {
