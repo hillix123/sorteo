@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sorteo RepsolPeru</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- VISTA PÚBLICA: registro -->
+  <main id="vista-registro" class="tarjeta">
+    <h1>Sorteo RepsolPeru</h1>
+    <p class="sub">Regístrate y participa por combustibles gratuitos ¡PARTICIPAN TODOS LOS COMBUSTIBLES!</p>
+
+    <form id="formulario" novalidate>
+      <label>Nombre completo *
+        <input type="text" name="nombre" maxlength="80" autocomplete="name">
+      </label>
+
+      <label>Teléfono o WhatsApp *
+        <input type="tel" name="telefono" maxlength="20" autocomplete="tel">
+      </label>
+
+      <label>Correo electrónico *
+        <input type="email" name="correo" maxlength="80" autocomplete="email">
+      </label>
+
+      <div class="fila">
+        <label>Distrito o ciudad
+          <input type="text" name="distrito" maxlength="60">
+        </label>
+        <label>Edad
+          <input type="number" name="edad" min="1" max="120">
+        </label>
+      </div>
+
+      <label>¡¡¡Coloca el numero de cuenta bancaria para recibir tu premio!!!
+        <input type="text" name="producto" maxlength="80">
+      </label>
+
+      <label>¿Cuanto compras normalmente?
+        <select name="compra">
+          <option value="">Selecciona...</option>
+          <option>0-20$</option>
+          <option>30-50</option>
+          <option>Tanque medio lleno</option>
+          <option>Tanque Full</option>
+          <option>Prefiero no mencionar</option>
+        </select>
+      </label>
+
+      <label>Comentarios o sugerencias
+        <textarea name="comentarios" rows="3" maxlength="500"></textarea>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="acepto">
+        Acepto que mis datos se usen únicamente para este sorteo.
+      </label>
+
+      <button type="submit">Participar</button>
+      <p id="mensaje" role="status"></p>
+    </form>
+
+    <div id="exito" class="exito oculto">
+      <h2>¡Ya estás participando!</h2>
+      <p>Tu código de participación es:</p>
+      <p class="codigo" id="codigo"></p>
+      <p class="sub">Guárdalo por si necesitas confirmarlo.</p>
+      <button type="button" id="otra" class="secundario">Registrar a otra persona</button>
+    </div>
+  </main>
+
+  <!-- VISTA ADMIN: se abre con index.html#admin -->
+  <main id="vista-admin" class="tarjeta ancha oculto">
+    <h1>Panel del sorteo</h1>
+
+    <div class="resumen">
+      <div class="dato"><b id="total">0</b> participantes</div>
+    </div>
+
+    <div class="acciones">
+      <button id="btn-csv" type="button">Descargar CSV (Excel)</button>
+      <button id="btn-json" type="button" class="secundario">Respaldo (JSON)</button>
+      <button id="btn-importar" type="button" class="secundario">Restaurar respaldo</button>
+      <button id="btn-borrar" type="button" class="peligro">Borrar todo</button>
+      <input type="file" id="archivo" accept=".json" class="oculto">
+    </div>
+
+    <section class="sorteo">
+      <h2>Sortear</h2>
+      <label class="en-linea">Cantidad de ganadores
+        <input type="number" id="cuantos" min="1" value="1">
+      </label>
+      <button id="btn-sortear" type="button">Sortear ahora</button>
+      <ol id="ganadores"></ol>
+    </section>
+
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th><th>Fecha</th><th>Nombre</th><th>Teléfono</th><th>Correo</th>
+            <th>Distrito</th><th>Edad</th><th>Producto favorito</th><th>Frecuencia</th>
+            <th>Dónde compra</th><th>Comentarios</th>
+          </tr>
+        </thead>
+        <tbody id="filas"></tbody>
+      </table>
+    </div>
+
+    <a class="enlace" href="#" id="volver">← Volver al registro</a>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

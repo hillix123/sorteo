@@ -1,0 +1,71 @@
+:root {
+  --fondo: #fbf5ec; --tarjeta: #ffffff; --texto: #2b2118; --suave: #7a6a5a;
+  --acento: #c0392b; --borde: #e3d6c4; --ok: #15803d; --error: #b91c1c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #1b1613; --tarjeta: #262019; --texto: #f3ebe0; --suave: #b3a595;
+    --acento: #e8634f; --borde: #40362b; --ok: #4ade80; --error: #f87171;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 24px 16px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--fondo); color: var(--texto);
+}
+.tarjeta {
+  max-width: 560px; margin: 0 auto; padding: 28px;
+  background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px;
+}
+.ancha { max-width: 1100px; }
+.oculto { display: none !important; }
+h1 { margin: 0 0 4px; font-size: 1.6rem; color: var(--acento); }
+h2 { margin: 0 0 12px; font-size: 1.15rem; }
+.sub { margin: 0 0 20px; color: var(--suave); }
+
+form label { display: block; margin-bottom: 16px; font-weight: 600; font-size: .95rem; }
+input[type=text], input[type=tel], input[type=email], input[type=number], select, textarea {
+  display: block; width: 100%; margin-top: 6px; padding: 10px 12px;
+  font: inherit; color: inherit; background: transparent;
+  border: 1px solid var(--borde); border-radius: 8px;
+}
+select option { color: #000; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--acento); outline-offset: 1px; }
+.fila { display: flex; gap: 12px; }
+.fila label { flex: 1; }
+.check { display: flex !important; align-items: flex-start; gap: 8px; font-weight: 400 !important; }
+.check input { margin-top: 4px; }
+
+button {
+  padding: 12px 18px; font: inherit; font-weight: 600; cursor: pointer;
+  color: #fff; background: var(--acento); border: 0; border-radius: 8px;
+}
+form button[type=submit] { width: 100%; }
+.secundario { background: transparent; color: var(--texto); border: 1px solid var(--borde); }
+.peligro { background: var(--error); }
+#mensaje { min-height: 1.4em; margin: 12px 0 0; text-align: center; }
+#mensaje.error { color: var(--error); }
+
+.exito { text-align: center; }
+.codigo {
+  display: inline-block; margin: 4px 0 12px; padding: 10px 22px;
+  font-size: 1.8rem; font-weight: 700; letter-spacing: 2px;
+  border: 2px dashed var(--acento); border-radius: 10px; color: var(--acento);
+}
+
+/* Panel admin */
+.resumen { display: flex; gap: 12px; margin: 16px 0; }
+.dato { padding: 12px 18px; border: 1px solid var(--borde); border-radius: 8px; }
+.dato b { display: block; font-size: 1.6rem; }
+.acciones { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+.sorteo { margin: 20px 0; padding: 16px; border: 1px solid var(--borde); border-radius: 10px; }
+.en-linea { display: inline-flex; align-items: center; gap: 8px; margin-right: 12px; font-weight: 600; }
+.en-linea input { width: 80px; margin: 0; }
+#ganadores { margin: 14px 0 0; padding-left: 22px; font-size: 1.1rem; font-weight: 600; }
+.tabla-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--borde); white-space: nowrap; }
+td:last-child { white-space: normal; min-width: 160px; }
+th { color: var(--suave); font-weight: 600; }
+.enlace { display: block; margin-top: 18px; text-align: center; color: var(--acento); }
