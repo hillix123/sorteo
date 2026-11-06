@@ -1,7 +1,7 @@
 // ====== Sorteo RepsolPeru - app.js ======
 // Guarda los participantes en localStorage del navegador.
 
-const CLAVE_STORAGE = 'sorteo_repsolperu_participantes';
+const URL_HOJA = 'https://script.google.com/macros/s/AKfycbxQrIWBnTQGTobWLRqxUY3kMjzdaZDG3Hw_sr-7l4TkJPbfYjLAUobm0P3NT56KiZrydw/exec';
 
 // ---------- Utilidades ----------
 function obtenerParticipantes() {
